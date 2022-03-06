@@ -34,7 +34,7 @@ if [[ "$FORCE_OVERWRITE" == "true" || ! -f "${DIR}/ha_db_user.txt" ]]; then
     readRequired "Enter database user" MYSQL_USER
     echo -n $MYSQL_USER> "${DIR}/ha_db_user.txt"
 fi
-if [[ "$FORCE_OVERWRITE" == "true" || ! -f "${DIR}/ha_db_user.txt" ]]; then
+if [[ "$FORCE_OVERWRITE" == "true" || ! -f "${DIR}/ha_db_password.txt" ]]; then
     readRequired "Enter database users password" MYSQL_PASSWORD
     echo -n $MYSQL_PASSWORD > "${DIR}/ha_db_password.txt"
 fi
