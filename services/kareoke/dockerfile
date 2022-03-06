@@ -1,0 +1,17 @@
+FROM node:16 as build
+ARG SERVICE=kareoke
+WORKDIR /srv/package/
+COPY ./ ./
+
+WORKDIR /srv/package/services/${SERVICE}
+RUN ls
+RUN npm ci
+
+FROM node:16
+USER node
+WORKDIR /srv/package/
+COPY ./common ./
+WORKDIR /srv/package/${SERVICE}
+COPY --from=build /srv/package/services/${SERVICE} ./
+WORKDIR /srv/package/services/${SERVICE}
+CMD npm run start
